@@ -1,4 +1,4 @@
-part of 'movice_details_cubit.dart';
+ part of 'movice_details_cubit.dart';
 
 abstract class PodcastDetailsState extends Equatable {
   const PodcastDetailsState();

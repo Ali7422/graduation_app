@@ -43,6 +43,7 @@ class _ExportAppState extends State<ExportApp> {
         duration: const Duration(milliseconds: 400),
         curve: Curves.easeInOut,
       );
+
     } else {
       Navigator.pushReplacementNamed(context, HomeNavBar.routeName);
     }

@@ -1,4 +1,4 @@
-part of 'podcast_player_cubit.dart';
+ part of 'podcast_player_cubit.dart';
 
 abstract class PodcastPlayerState extends Equatable {
   const PodcastPlayerState();

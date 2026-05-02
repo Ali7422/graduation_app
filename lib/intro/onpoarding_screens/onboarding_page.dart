@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:movies/core/theme/app_colors.dart';
 
-class OnpoardingScreens extends StatelessWidget {
+class OnboardingScreens extends StatelessWidget {
   final String image;
   final String title;
   final String description;
   final bool isLast;
   final VoidCallback onNext;
 
-  const OnpoardingScreens({
+  const OnboardingScreens({
     super.key,
     required this.image,
     required this.title,

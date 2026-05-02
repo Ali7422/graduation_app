@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+ import 'package:flutter/material.dart';
 import 'package:movies/core/helper/responsive.dart';
 
 import '../theme/app_colors.dart';

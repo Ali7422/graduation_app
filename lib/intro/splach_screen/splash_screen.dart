@@ -10,6 +10,7 @@ static const String routeName=" /splashScreen";
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
+
 class _SplashScreenState extends State<SplashScreen> {
   @override
  void initState() {

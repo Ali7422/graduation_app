@@ -9,8 +9,7 @@ class GetPodcastsByCategoryUseCase {
   GetPodcastsByCategoryUseCase(this.repository);
 
   Future<Either<Failure, List<Podcast>>> call(String category) async {
-    // Simulate category using search query
-    final query = category.toLowerCase().contains('business') 
+    final query = category.toLowerCase().contains('business')
         ? 'business podcast' 
         : category.toLowerCase().contains('technology') 
             ? 'technology podcast' 

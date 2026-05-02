@@ -1,4 +1,4 @@
-part of 'podcasts_cubit.dart';
+ part of 'podcasts_cubit.dart';
 
 abstract class PodcastsState extends Equatable {
   const PodcastsState();

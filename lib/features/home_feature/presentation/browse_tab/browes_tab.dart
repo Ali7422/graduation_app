@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies/core/theme/app_colors.dart';
 import 'package:movies/features/home_feature/presentation/browse_tab/widget/genre_movise_grid.dart';

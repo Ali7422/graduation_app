@@ -1,4 +1,4 @@
-class SimilarPodcastsResponse {
+ class SimilarPodcastsResponse {
   String? status;
   String? statusMessage;
   SimilarPodcastData? data;

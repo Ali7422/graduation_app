@@ -4,7 +4,6 @@ import 'package:movies/features/auth_feature/auth/login/login_screen.dart';
 import 'package:movies/features/auth_feature/auth/register/resgister_screen.dart';
 import 'package:movies/features/home_feature/presentation/browse_tab/browes_tab.dart';
 import 'package:movies/features/home_feature/presentation/home_tab/home_tab.dart';
-
 import 'package:movies/intro/onpoarding_screens/export_app.dart';
 
 import 'package:movies/intro/splach_screen/splash_screen.dart';

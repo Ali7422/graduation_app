@@ -1,4 +1,4 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
+ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import '../../../podcast_search/domain/entities/podcast.dart';
 import '../../../podcast_search/domain/usecases/get_trending_podcasts_use_case.dart';

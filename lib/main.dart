@@ -10,9 +10,7 @@ import 'core/theme/app_theme.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
- // await Firebase.initializeApp(  // Firebase disabled
- //  options: DefaultFirebaseOptions.currentPlatform
- // );
+
   runApp(const PodcastApp());
 }
 

@@ -31,17 +31,13 @@ class _HomeNavBarState extends State<HomeNavBar> {
   @override
   Widget build(BuildContext context) {
     final List<Widget> pages = [
-      // Home Screen
       HomeTabs(onSeeMore: navigateToBrowse),
-      // Search Screen
       const PodcastSearchPage(),
 
-     // Browse Screen
       BrowseTab(
         selectedCategory: selectedCategory,
         key: ValueKey(selectedCategory),
       ),
-      // Profile Screen
       const ProfileScreen(),
     ];
 

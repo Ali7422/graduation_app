@@ -1,4 +1,4 @@
-import 'dart:ui';
+ import 'dart:ui';
 
 class AppColors {
   static const backGroundColor =  Color(0xff121312);

@@ -1,4 +1,4 @@
-import 'package:cached_network_image/cached_network_image.dart';
+ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:movies/features/movies_details/presentation/screen/movies_details_screen.dart';
 import 'package:shimmer/shimmer.dart';
