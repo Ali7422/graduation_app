@@ -1,0 +1,47 @@
+name: movies
+description: "A new Flutter project."
+publish_to: "none"
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.9.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+  carousel_slider: ^5.1.1
+  flutter_bloc: ^9.1.1
+  dio: ^5.9.0
+  cached_network_image: ^3.4.1
+  webview_flutter: ^4.13.0
+  skeletonizer: ^2.1.0+1
+  http: ^1.5.0
+  shimmer: ^3.0.0
+  flutter_screenutil: ^5.9.3
+  animated_text_kit: ^4.3.0
+  font_awesome_flutter: ^10.12.0
+  equatable: ^2.0.8
+  dartz: ^0.10.1
+  just_audio: ^0.9.44
+  audio_video_progress_bar: ^2.0.1
+  rxdart: ^0.28.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/fonts/
+
+  fonts:
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/Roboto.ttf
