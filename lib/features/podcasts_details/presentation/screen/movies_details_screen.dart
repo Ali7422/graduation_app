@@ -6,7 +6,6 @@ import '../../business_logic/movies_details_cubit/movice_details_cubit.dart';
 import '../../business_logic/podcast_player_cubit/podcast_player_cubit.dart';
 import '../../../../core/helper/audio_player_service.dart';
 
-import 'package:dio/dio.dart';
 import 'package:movies/core/networking/api_service.dart';
 import 'package:movies/features/podcast_search/data/data_sources/podcast_remote_data_source.dart';
 import 'package:movies/features/podcast_search/data/repositories/podcast_repository_impl.dart';
@@ -25,7 +24,7 @@ class PodcastDetailsScreen extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) {
-            final apiService = ApiService(Dio());
+            final apiService = ApiService();
             final dataSource = PodcastRemoteDataSourceImpl(apiService);
             final repository = PodcastRepositoryImpl(dataSource);
             return PodcastDetailsCubit(GetPodcastDetailsUseCase(repository))..getPodcastDetails(podcastId);

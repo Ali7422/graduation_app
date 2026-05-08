@@ -2,11 +2,10 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:dio/dio.dart';
 import '../../../../core/networking/api_service.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_text_theme.dart';
-import '../../../movies_details/presentation/screen/movies_details_screen.dart';
+import '../../../podcasts_details/presentation/screen/movies_details_screen.dart';
 import '../../domain/entities/podcast.dart';
 import '../../data/data_sources/podcast_remote_data_source.dart';
 import '../../data/repositories/podcast_repository_impl.dart';
@@ -30,7 +29,7 @@ class _PodcastSearchPageState extends State<PodcastSearchPage> {
   @override
   void initState() {
     super.initState();
-    final apiService = ApiService(Dio());
+    final apiService = ApiService();
     final remoteDataSource = PodcastRemoteDataSourceImpl(apiService);
     final repository = PodcastRepositoryImpl(remoteDataSource);
     final useCase = SearchPodcastsUseCase(repository);

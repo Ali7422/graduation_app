@@ -1,27 +1,30 @@
-  import 'package:dio/dio.dart';
+import 'package:dio/dio.dart';
 import 'api_constants.dart';
 
 class ApiService {
-  final Dio _dio;
+  late Dio _dio;
+  static final ApiService _instance = ApiService._internal();
 
-  ApiService(this._dio) {
-    _dio.options.baseUrl = ApiConstants.baseUrl;
-    _dio.options.connectTimeout = const Duration(seconds: 20);
-    _dio.options.receiveTimeout = const Duration(seconds: 20);
-    
-    _dio.interceptors.add(LogInterceptor(
-      requestBody: true,
-      responseBody: true,
-      logPrint: (obj) => print(obj),
-    ));
-    
-    _dio.options.headers = {
-      'X-ListenAPI-Key': ApiConstants.apiKey,
-    };
+  factory ApiService() {
+    return _instance;
   }
 
-  Future<Map<String, dynamic>> get({
-    required String endpoint,
+  ApiService._internal() {
+    _dio = Dio(
+      BaseOptions(
+        baseUrl: ApiConstants.baseUrl,
+        headers: {
+          'X-ListenAPI-Key': ApiConstants.apiKey,
+          'Content-Type': 'application/json',
+        },
+        connectTimeout: const Duration(seconds: 30),
+        receiveTimeout: const Duration(seconds: 30),
+      ),
+    );
+  }
+
+  Future<Map<String, dynamic>> get(
+    String endpoint, {
     Map<String, dynamic>? queryParameters,
   }) async {
     try {
@@ -29,26 +32,15 @@ class ApiService {
         endpoint,
         queryParameters: queryParameters,
       );
-      return response.data;
+      return response.data as Map<String, dynamic>;
     } on DioException catch (e) {
-      _handleDioError(e);
-      rethrow;
-    }
-  }
-
-  void _handleDioError(DioException e) {
-    if (e.response != null) {
       if (e.response?.statusCode == 401) {
-        throw Exception('Unauthorized: Please check your API key.');
-      } else if (e.response?.statusCode == 404) {
-        throw Exception('Not Found: The requested resource was not found.');
-      } else {
-        throw Exception('Server Error: ${e.response?.statusMessage}');
-      }
-    } else {
-      if (e.type == DioExceptionType.connectionTimeout ||
+        throw Exception('Unauthorized: check your API key.');
+      } else if (e.type == DioExceptionType.connectionTimeout ||
           e.type == DioExceptionType.receiveTimeout) {
-        throw Exception('Connection Timeout: Please check your internet connection.');
+        throw Exception('Network Error: connection timed out.');
+      } else if (e.response != null) {
+        throw Exception('Server Error: ${e.response?.statusCode}');
       } else {
         throw Exception('Network Error: ${e.message}');
       }

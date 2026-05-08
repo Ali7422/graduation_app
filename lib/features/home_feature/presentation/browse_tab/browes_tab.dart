@@ -2,7 +2,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies/core/theme/app_colors.dart';
 import 'package:movies/features/home_feature/presentation/browse_tab/widget/genre_movise_grid.dart';
-import 'package:dio/dio.dart';
 import 'package:movies/core/networking/api_service.dart';
 import 'package:movies/features/podcast_search/data/data_sources/podcast_remote_data_source.dart';
 import 'package:movies/features/podcast_search/data/repositories/podcast_repository_impl.dart';
@@ -84,13 +83,12 @@ class _BrowseTabState extends State<BrowseTab>
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) {
-        final apiService = ApiService(Dio());
+        final apiService = ApiService();
         final dataSource = PodcastRemoteDataSourceImpl(apiService);
         final repository = PodcastRepositoryImpl(dataSource);
         return PodcastsCubit(
           getTrendingPodcastsUseCase: GetTrendingPodcastsUseCase(repository),
           getPodcastsByCategoryUseCase: GetPodcastsByCategoryUseCase(repository),
-          searchPodcastsUseCase: SearchPodcastsUseCase(repository),
         );
       },
       child: Scaffold(

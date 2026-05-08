@@ -16,11 +16,11 @@ class PodcastModel extends Podcast {
   factory PodcastModel.fromJson(Map<String, dynamic> json) {
     return PodcastModel(
       id: json['id'] as String? ?? '',
-      title: json['title_original'] as String? ?? json['title'] as String? ?? 'No Title',
-      publisher: json['publisher_original'] as String? ?? json['publisher'] as String? ?? 'Unknown Publisher',
+      title: (json['title'] ?? json['title_original']) as String? ?? 'No Title',
+      publisher: (json['publisher'] ?? json['publisher_original']) as String? ?? 'Unknown Publisher',
       image: json['image'] as String? ?? '',
-      thumbnail: json['thumbnail'] as String?,
-      description: json['description_original'] as String? ?? json['description'] as String?,
+      thumbnail: (json['thumbnail'] ?? json['thumbnail_original']) as String?,
+      description: (json['description'] ?? json['description_original']) as String? ?? '',
       totalEpisodes: json['total_episodes'] as int? ?? 0,
       episodes: (json['episodes'] as List?)
           ?.map((e) => EpisodeModel.fromJson(e as Map<String, dynamic>))

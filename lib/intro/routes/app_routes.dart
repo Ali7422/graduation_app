@@ -6,8 +6,9 @@ import 'package:movies/features/home_feature/presentation/browse_tab/browes_tab.
 import 'package:movies/features/home_feature/presentation/home_tab/home_tab.dart';
 import 'package:movies/intro/onpoarding_screens/export_app.dart';
 
-import 'package:movies/intro/splach_screen/splash_screen.dart';
 import 'package:movies/nav_bar.dart';
+
+import '../splash_screen/splash_screen.dart';
 
 class AppRoutes {
   static const String splash = SplashScreen.routeName;

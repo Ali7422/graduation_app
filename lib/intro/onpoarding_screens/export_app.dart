@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movies/core/theme/app_colors.dart';
+import 'package:movies/features/auth_feature/auth/login/login_screen.dart';
 import 'package:movies/nav_bar.dart';
 
 class ExportApp extends StatefulWidget {
@@ -45,9 +46,10 @@ class _ExportAppState extends State<ExportApp> {
       );
 
     } else {
-      Navigator.pushReplacementNamed(context, HomeNavBar.routeName);
+      Navigator.pushReplacementNamed(context, LoginScreen.routeName);
     }
   }
+
 
   @override
   Widget build(BuildContext context) {

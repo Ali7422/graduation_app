@@ -6,7 +6,8 @@ import 'package:shimmer/shimmer.dart';
 import '../../../../../core/shared/custom_rating_card.dart';
 
 import 'package:movies/features/podcast_search/domain/entities/podcast.dart';
-import 'package:movies/features/movies_details/presentation/screen/movies_details_screen.dart';
+
+import '../../../../podcasts_details/presentation/screen/movies_details_screen.dart';
 
 Widget buildCardPodcast(BuildContext context, Podcast podcast) {
   return GestureDetector(

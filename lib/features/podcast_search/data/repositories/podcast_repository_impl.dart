@@ -20,12 +20,13 @@ class PodcastRepositoryImpl implements PodcastRepository {
         nextOffset: response.nextOffset,
       ));
     } catch (e) {
-      if (e.toString().contains('Unauthorized')) {
-        return const Left(UnAuthorizedFailure('Invalid API Key. Please check your credentials.'));
-      } else if (e.toString().contains('Timeout')) {
-        return const Left(NetworkFailure('Connection timed out. Please try again.'));
+      final message = e.toString().replaceFirst('Exception: ', '');
+      if (message.contains('check your API key')) {
+        return Left(UnAuthorizedFailure(message));
+      } else if (message.contains('Network Error')) {
+        return Left(NetworkFailure(message));
       } else {
-        return Left(ServerFailure(e.toString()));
+        return Left(ServerFailure(message));
       }
     }
   }
@@ -36,7 +37,7 @@ class PodcastRepositoryImpl implements PodcastRepository {
       final response = await remoteDataSource.searchPodcasts('بودكاست', language: 'Arabic');
       return Right(response.results);
     } catch (e) {
-      return Left(ServerFailure(e.toString()));
+      return Left(ServerFailure(e.toString().replaceFirst('Exception: ', '')));
     }
   }
 
@@ -46,7 +47,7 @@ class PodcastRepositoryImpl implements PodcastRepository {
       final podcast = await remoteDataSource.getPodcastDetails(id);
       return Right(podcast);
     } catch (e) {
-      return Left(ServerFailure(e.toString()));
+      return Left(ServerFailure(e.toString().replaceFirst('Exception: ', '')));
     }
   }
 }

@@ -1,6 +1,5 @@
 import '../../../../core/networking/api_service.dart';
 import '../models/podcast_model.dart';
-import '../../../../core/networking/api_constants.dart';
 
 abstract class PodcastRemoteDataSource {
   Future<SearchResponseModel> searchPodcasts(String query, {int offset = 0, String language = 'Arabic'});
@@ -15,7 +14,7 @@ class PodcastRemoteDataSourceImpl implements PodcastRemoteDataSource {
   @override
   Future<SearchResponseModel> searchPodcasts(String query, {int offset = 0, String language = 'Arabic'}) async {
     final data = await apiService.get(
-      endpoint: ApiConstants.searchEndpoint,
+      '/search',
       queryParameters: {
         'q': query,
         'type': 'podcast',
@@ -23,16 +22,12 @@ class PodcastRemoteDataSourceImpl implements PodcastRemoteDataSource {
         'language': language,
       },
     );
-    
     return SearchResponseModel.fromJson(data);
   }
 
   @override
   Future<PodcastModel> getPodcastDetails(String id) async {
-    final data = await apiService.get(
-      endpoint: 'podcasts/$id',
-    );
-    
+    final data = await apiService.get('/podcasts/$id');
     return PodcastModel.fromJson(data);
   }
 }

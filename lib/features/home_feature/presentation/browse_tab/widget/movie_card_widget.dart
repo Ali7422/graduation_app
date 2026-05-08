@@ -1,9 +1,10 @@
  import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:movies/features/movies_details/presentation/screen/movies_details_screen.dart';
 import 'package:shimmer/shimmer.dart';
 import '../../../../../core/shared/custom_rating_card.dart';
 import 'package:movies/features/podcast_search/domain/entities/podcast.dart';
+
+import '../../../../podcasts_details/presentation/screen/movies_details_screen.dart';
 
 class PodcastCard extends StatelessWidget {
   final Podcast podcast;

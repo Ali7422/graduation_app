@@ -6,8 +6,8 @@ import 'package:movies/core/theme/app_colors.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:shimmer/shimmer.dart';
 
+import '../../../../podcasts_details/presentation/screen/movies_details_screen.dart';
 import '../../cubit/podcasts_cubit.dart';
-import '../../../../movies_details/presentation/screen/movies_details_screen.dart';
 
 class SliderPodcast extends StatelessWidget {
   final ValueNotifier<int> currentIndexNotifier;

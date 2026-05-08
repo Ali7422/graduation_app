@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movies/core/theme/app_colors.dart';
-import 'package:movies/features/auth_feature/auth/validation/valisation.dart';
-// import 'package:movies/features/firebase/firebase_auth.dart'; // Firebase disabled
+import 'package:movies/features/auth_feature/auth/validation/validation.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class ForgetPasswordScreen extends StatefulWidget {
   const ForgetPasswordScreen({super.key});
@@ -13,6 +13,7 @@ class ForgetPasswordScreen extends StatefulWidget {
 
 class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
   final TextEditingController emailController = TextEditingController();
+  bool isLoading = false;
 
   Future<void> resetPassword() async {
     String email = emailController.text.trim();
@@ -24,9 +25,9 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
       return;
     }
 
+    setState(() => isLoading = true);
     try {
-      // Firebase disabled - password reset bypassed
-      // await FirebaseAuthService.sendPasswordResetEmail(email: email);
+      await Supabase.instance.client.auth.resetPasswordForEmail(email);
 
       if (!mounted) return;
 
@@ -38,10 +39,13 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
     } catch (e) {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("An error occurred")),
+        SnackBar(content: Text("An error occurred: ${e.toString()}")),
       );
+    } finally {
+      if (mounted) setState(() => isLoading = false);
     }
   }
+
 
   @override
   Widget build(BuildContext context) {

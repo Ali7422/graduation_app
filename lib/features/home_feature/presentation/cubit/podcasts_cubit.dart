@@ -10,12 +10,10 @@ part 'podcasts_state.dart';
 class PodcastsCubit extends Cubit<PodcastsState> {
   final GetTrendingPodcastsUseCase getTrendingPodcastsUseCase;
   final GetPodcastsByCategoryUseCase getPodcastsByCategoryUseCase;
-  final SearchPodcastsUseCase searchPodcastsUseCase;
 
   PodcastsCubit({
     required this.getTrendingPodcastsUseCase,
     required this.getPodcastsByCategoryUseCase,
-    required this.searchPodcastsUseCase,
   }) : super(PodcastsInitial());
 
   Future<void> getPodcastsList() async {

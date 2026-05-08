@@ -2,6 +2,7 @@
 import 'package:movies/core/helper/responsive.dart';
 import 'package:movies/core/theme/app_colors.dart';
 import 'package:movies/core/theme/app_text_theme.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -40,12 +41,12 @@ class ProfileScreen extends StatelessWidget {
 
               // Username
               Text(
-                "Podcast Listener",
+                Supabase.instance.client.auth.currentUser?.userMetadata?['full_name'] ?? "Podcast Listener",
                 style: TextStyleHelper.font24WhiteBold,
               ),
               SizedBox(height: context.height * 0.005),
               Text(
-                "listener@podcast.app",
+                Supabase.instance.client.auth.currentUser?.email ?? "listener@podcast.app",
                 style: TextStyleHelper.font14GreyRegular,
               ),
               SizedBox(height: context.height * 0.04),
@@ -108,8 +109,18 @@ class ProfileScreen extends StatelessWidget {
                 title: "Logout",
                 iconColor: AppColors.red,
                 titleColor: AppColors.red,
-                onTap: () {},
+                onTap: () async {
+                  await Supabase.instance.client.auth.signOut();
+                  if (context.mounted) {
+                    Navigator.pushNamedAndRemoveUntil(
+                      context,
+                      "/LoginScreen",
+                      (route) => false,
+                    );
+                  }
+                },
               ),
+
             ],
           ),
         ),
